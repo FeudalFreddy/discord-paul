@@ -50,7 +50,7 @@ async def dogeF(ctx):
     doge_price = float(binance_client.get_symbol_ticker(symbol="DOGEEUR")['price'])
     await ctx.send(f'{round(amount*doge_price,2)}€ in Freddys Depot')
     
-    
+# test command
 @bot_client.command()
 async def hi(ctx):
     await ctx.send('Hello')
