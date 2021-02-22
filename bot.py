@@ -14,7 +14,7 @@ discord_api = os.environ.get('discord_api')
 binance_client = Client(binance_api, binance_secret)
 bot_client = commands.Bot(command_prefix = '$')
 
-
+command_list = ['ping', 'test', 'doge', 'doge amount', 'dogeF', 'dogef', 'help']
 
 ## sobald der bot online ist
 @bot_client.event
@@ -54,5 +54,12 @@ async def dogeF(ctx):
 @bot_client.command()
 async def hi(ctx):
     await ctx.send('Hello')
+
+@bot_client.command()
+async def help(ctx):
+    await ctx.send('Hier eine Liste an Befehlen, die ich kann')
+    await ctx.send(command_list.sort)
+    
+    
     
 bot_client.run(discord_api)
