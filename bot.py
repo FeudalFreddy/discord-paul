@@ -55,6 +55,22 @@ async def dogeF(ctx):
 async def hi(ctx):
     await ctx.send('Hello')
     
+# gibt die Primfaktoren einer Zahl zurück
+@bot_client.command()
+async def factorize(cxt, number):
+    factors = []
+    if number == 1:
+        return ''
     
+    f=2
+    
+    while f<=number:
+        if n%f==0:
+            factors.append(f)
+            n=n/f
+        else:
+            f+=1
+            
+    return factors
     
 bot_client.run(discord_api)
