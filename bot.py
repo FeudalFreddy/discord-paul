@@ -2,7 +2,7 @@ if __name__ == '__main__':
     ## imports
 
     import discord
-    import os
+    import os #?
     from discord.ext import commands
     from binance.client import Client
     from discord.ext.commands import bot
