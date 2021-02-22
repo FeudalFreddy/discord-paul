@@ -54,11 +54,6 @@ async def dogeF(ctx):
 @bot_client.command()
 async def hi(ctx):
     await ctx.send('Hello')
-
-@bot_client.command()
-async def help(ctx):
-    await ctx.send('Hier eine Liste an Befehlen, die ich kann')
-    await ctx.send(command_list.sort)
     
     
     
