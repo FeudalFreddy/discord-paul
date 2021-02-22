@@ -57,7 +57,7 @@ async def hi(ctx):
     
 # gibt die Primfaktoren einer Zahl zurück
 @bot_client.command()
-async def factorize(cxt, number):
+async def factorize(ctx, number):
     factors = []
     if number == 1:
         return ''
@@ -71,6 +71,6 @@ async def factorize(cxt, number):
         else:
             f+=1
             
-    return factors
+    await ctx.send(factors)
     
 bot_client.run(discord_api)
