@@ -51,5 +51,8 @@ async def dogeF(ctx):
     await ctx.send(f'{round(amount*doge_price,2)}€ in Freddys Depot')
     
     
+@bot_client.command()
+async def hi(ctx):
+    await ctx.send('Hello')
     
 bot_client.run(discord_api)
