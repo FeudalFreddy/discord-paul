@@ -59,15 +59,17 @@ async def hi(ctx):
 @bot_client.command()
 async def factorize(ctx, number):
     factors = []
+    number = int(number)
+    
     if number == 1:
         return ''
     
     f=2
     
     while f<=number:
-        if n%f==0:
+        if number%f==0:
             factors.append(f)
-            n=n/f
+            number=number/f
         else:
             f+=1
             
