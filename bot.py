@@ -10,9 +10,11 @@ binance_secret = os.environ.get('binance_secret')
 discord_api = os.environ.get('discord_api')
 
 binance_client = Client(binance_api, binance_secret)
+
+## prefix ist $
 bot_client = commands.Bot(command_prefix = '$')
 
-command_list = ['ping', 'test', 'doge', 'doge amount', 'dogeF', 'dogef', 'help']
+
 
 ## sobald der bot online ist
 @bot_client.event
@@ -114,5 +116,7 @@ async def wiki(ctx, keyword):
 async def contribute(ctx):
     link = r'https://github.com/FeudalFreddy/discord-paul'
     await ctx.send(f'Du möchstest an Paul mitarbeiten? \nUnter diesem Link findest du meinen Sourcecode:\n{link}')
- 
+
+
+
 bot_client.run(discord_api)
