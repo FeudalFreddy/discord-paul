@@ -107,11 +107,16 @@ async def play(ctx, arg):
     
 # öffne wikipedia mit bestimmten keyword
 @bot_client.command()
-async def wiki(ctx, keyword):
+async def wiki(ctx, *keyword):
     if keyword == 'paul' or keyword == 'discordbot':
         await ctx.send('Du hast ein Easter-Egg gefunden!')
+    
+    suchbegriff = ""
+    for word in keyword:
+        suchbegriff += word
+        suchbegriff += '_'
         
-    link = f'https://de.wikipedia.org/wiki/{keyword}'
+    link = f'https://de.wikipedia.org/wiki/{suchbegriff}'
     await ctx.send(link)
     
 
@@ -134,6 +139,7 @@ async def rng(ctx, lower=1, upper=100):
 async def craft(ctx, recipe):
     link = f'https://minecraft-de.gamepedia.com/{recipe}'
     await ctx.send(link)
+    await ctx.send('Ich bin noch in der Entwicklung')
 
 
 bot_client.run(discord_api)
