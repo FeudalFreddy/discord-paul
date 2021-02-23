@@ -99,7 +99,12 @@ async def play(ctx, arg):
     await ctx.send(f'Meintest du "!play {arg}" ?')
     
     
+# öffne wikipedia mit bestimmten keyword
+@bot_client.command()
+async def wiki(ctx, keyword):
+    link = f'https://de.wikipedia.org/wiki/{keyword}'
+    await ctx.send(link)
     
-    
-    
+
+   
 bot_client.run(discord_api)
