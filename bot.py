@@ -75,7 +75,7 @@ async def factorize(ctx, number):
         await ctx.send('Was ein funny boy bist du denn?')
         return
     if number <= 0:
-        await ctx.send('Ne, also solche Zahlen kann ich nicht faktorisieren. \n Bitte gib eine Zahl, welche kleiner ist als  ein!')
+        await ctx.send('Ne, also solche Zahlen kann ich nicht faktorisieren. \nBitte gib eine Zahl, welche größer ist als 1, ein!')
         return
     
     factors = []
@@ -87,7 +87,9 @@ async def factorize(ctx, number):
             number=number/f
         else:
             f+=1
-            
+    
+    if len(factors) == 1:
+        await ctx.send('Herzlichen Glückwunsch, du hast eine Primzahl gefunden!')
     await ctx.send(factors)
     
 bot_client.run(discord_api)
