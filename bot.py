@@ -120,7 +120,7 @@ async def contribute(ctx):
 
 
 # random number generator
-@bot_client.command()
+@bot_client.command(aliases = ['randomnumber', 'random', 'numbergenerator'])
 async def rng(ctx, lower=1, upper=100):
     await ctx.send(f'Zufallszahl zwischen {lower} und {upper}. Kommt sofort')
     await ctx.send(random.randint(lower,upper))
