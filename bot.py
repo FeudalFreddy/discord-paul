@@ -102,6 +102,9 @@ async def play(ctx, arg):
 # öffne wikipedia mit bestimmten keyword
 @bot_client.command()
 async def wiki(ctx, keyword):
+    if keyword == 'paul' or keyword == 'discordbot':
+        await ctx.send('Du hast ein Easter-Egg gefunden!')
+        
     link = f'https://de.wikipedia.org/wiki/{keyword}'
     await ctx.send(link)
     
@@ -110,6 +113,6 @@ async def wiki(ctx, keyword):
 @bot_client.command()
 async def contribute(ctx):
     link = r'https://github.com/FeudalFreddy/discord-paul'
-    await ctx.send(f'Du möchstest an Paul mitarbeiten? \nUnter diesem Link findest du meinen Sourcecode:\n {link}')
+    await ctx.send(f'Du möchstest an Paul mitarbeiten? \nUnter diesem Link findest du meinen Sourcecode:\n{link}')
  
 bot_client.run(discord_api)
