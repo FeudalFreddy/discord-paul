@@ -1,5 +1,3 @@
-## imports
-
 import discord
 import os
 from discord.ext import commands
@@ -29,9 +27,14 @@ async def on_ready():
 async def ping(ctx):
     await ctx.send(f'Pong! {round(bot_client.latency * 1000)}ms')
 
+
 # gebe den aktuellen dogecoin kurs aus, inkl. mengenangabe
 @bot_client.command()
 async def doge(ctx, amount=1.0):
+    
+    if amount <= 0:
+        await ctx.send('seriously? Du musst schon eone Zahl größer als 0 angeben.')
+        return
     
     doge_price = binance_client.get_symbol_ticker(symbol="DOGEEUR")['price']
     # runde auf 4 Nachkommastellen
@@ -43,6 +46,7 @@ async def doge(ctx, amount=1.0):
     else:
         await ctx.send(f'{round(amount*doge_price,2)}€')
 
+
 # gebe den aktuellen wert von freddy dogecoin an
 @bot_client.command(aliases = ['dogef'])
 async def dogeF(ctx):
@@ -50,22 +54,33 @@ async def dogeF(ctx):
     doge_price = float(binance_client.get_symbol_ticker(symbol="DOGEEUR")['price'])
     await ctx.send(f'{round(amount*doge_price,2)}€ in Freddys Depot')
     
+    
 # test command
 @bot_client.command()
 async def hi(ctx):
     await ctx.send('Hello')
     
+    
 # gibt die Primfaktoren einer Zahl zurück
 @bot_client.command()
 async def factorize(ctx, number):
+    
+    if type(number) != int:
+        await ctx.send('Wie soll ich das denn faktorisieren?')
+        return
+    if number == 1:
+        await ctx.send('Was ein funny boy bist du denn?')
+        return
+    if number <= 0:
+        await ctx.send('Ne, also solche Zahlen kann ich nicht faktorisieren. \n Bitte gib eine Zahl, welche kleiner ist als  ein!')
+        return
+    
     factors = []
     number = int(number)
     
     if number == 1:
-        return ''
-    
+        return
     f=2
-    
     while f<=number:
         if number%f==0:
             factors.append(f)
