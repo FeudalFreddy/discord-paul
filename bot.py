@@ -1,5 +1,6 @@
 import discord
 import os
+import random
 from discord.ext import commands
 from binance.client import Client
 from discord.ext.commands import bot
@@ -118,5 +119,9 @@ async def contribute(ctx):
     await ctx.send(f'Du möchstest an Paul mitarbeiten? \nUnter diesem Link findest du meinen Sourcecode:\n{link}')
 
 
-
+# random number generator
+@bot_client.command()
+async def rng(ctx, lower=1, upper=100):
+    await ctx.send(f'Zufallszahl zwischen {lower} und {upper}. Kommt sofort')
+    await ctx.send(random.randint(lower,upper))
 bot_client.run(discord_api)
