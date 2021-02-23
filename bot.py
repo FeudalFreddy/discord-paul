@@ -106,5 +106,10 @@ async def wiki(ctx, keyword):
     await ctx.send(link)
     
 
-   
+# für menschen, die an paul mitarbeiten wollen
+@bot_client.command()
+async def contribute(ctx):
+    link = r'https://github.com/FeudalFreddy/discord-paul'
+    await ctx.send(f'Du möchstest an Paul mitarbeiten? \nUnter diesem Link findest du meinen Sourcecode:\n {link}')
+ 
 bot_client.run(discord_api)
