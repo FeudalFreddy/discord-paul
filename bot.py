@@ -65,9 +65,12 @@ async def hi(ctx):
 @bot_client.command()
 async def factorize(ctx, number):
     
-    if type(number) != int:
+    try:
+        number = int(number)
+    except:
         await ctx.send('Wie soll ich das denn faktorisieren?')
         return
+        
     if number == 1:
         await ctx.send('Was ein funny boy bist du denn?')
         return
@@ -76,10 +79,7 @@ async def factorize(ctx, number):
         return
     
     factors = []
-    number = int(number)
     
-    if number == 1:
-        return
     f=2
     while f<=number:
         if number%f==0:
