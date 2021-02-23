@@ -91,5 +91,15 @@ async def factorize(ctx, number):
     if len(factors) == 1:
         await ctx.send('Herzlichen Glückwunsch, du hast eine Primzahl gefunden!')
     await ctx.send(factors)
+
+
+# falschen bot zum musik spielen gewählt?
+@bot_client.command()
+async def play(ctx, arg):
+    await ctx.send(f'Meintest du "!play {arg}" ?')
+    
+    
+    
+    
     
 bot_client.run(discord_api)
