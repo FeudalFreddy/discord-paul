@@ -1,9 +1,12 @@
 import discord
 import os
 import random
+import requests
+
 from discord.ext import commands
 from binance.client import Client
 from discord.ext.commands import bot
+from bs4 import BeautifulSoup
 
 ## api einbindungen
 binance_api =  os.environ.get('binance_api')
@@ -122,6 +125,34 @@ async def contribute(ctx):
 # random number generator
 @bot_client.command(aliases = ['randomnumber', 'random', 'numbergenerator'])
 async def rng(ctx, lower=1, upper=100):
-    await ctx.send(f'Zufallszahl zwischen {lower} und {upper}. Kommt sofort')
+    await ctx.send(f'Zufallszahl zwischen {lower} und {upper}? Kommt sofort!')
     await ctx.send(random.randint(lower,upper))
+
+
+# minecraft crafting rezepte
+@bot_client.command()
+async def craft(ctx, recipe):
+    link = f'https://minecraft-de.gamepedia.com/{recipe}'
+    
+    #htmldata = getdata(link)
+    #soup = BeautifulSoup(htmldata, 'html.parser')  
+    #images = soup.find_all('img')
+    
+    #for item in images:
+    #    ctx.send(item['src'])  
+    #    pic = item['src']
+    #    if recipe in pic:
+    #        await ctx.send(item['src']) 
+    #print('done')
+    
+    await ctx.send(link)
+
+
+
+## hilfsmethoden
+# daten von website scrapen
+def getdata(url):  
+    r = requests.get(url)  
+    return r.text
+
 bot_client.run(discord_api)
