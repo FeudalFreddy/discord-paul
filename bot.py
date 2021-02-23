@@ -133,26 +133,7 @@ async def rng(ctx, lower=1, upper=100):
 @bot_client.command()
 async def craft(ctx, recipe):
     link = f'https://minecraft-de.gamepedia.com/{recipe}'
-    
-    #htmldata = getdata(link)
-    #soup = BeautifulSoup(htmldata, 'html.parser')  
-    #images = soup.find_all('img')
-    
-    #for item in images:
-    #    ctx.send(item['src'])  
-    #    pic = item['src']
-    #    if recipe in pic:
-    #        await ctx.send(item['src']) 
-    #print('done')
-    
     await ctx.send(link)
 
-
-
-## hilfsmethoden
-# daten von website scrapen
-def getdata(url):  
-    r = requests.get(url)  
-    return r.text
 
 bot_client.run(discord_api)
