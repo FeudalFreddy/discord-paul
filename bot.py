@@ -137,9 +137,11 @@ async def rng(ctx, lower=1, upper=100):
 # minecraft crafting rezepte
 @bot_client.command()
 async def craft(ctx, recipe):
-    link = f'https://minecraft-de.gamepedia.com/{recipe}'
-    await ctx.send(link)
-    await ctx.send('Ich bin noch in der Entwicklung')
-
+                
+    link_article = 'https://www.minecraftcrafting.info/'
+    link_pic = f'view-source:https://www.minecraftcrafting.info/imgs/craft_{recipe}.png'
+    await ctx.send(link_pic)
+    await ctx.send(link_article)
+    await ctx.send('Möglicherweise enstehen hier noch Fehler')
 
 bot_client.run(discord_api)
