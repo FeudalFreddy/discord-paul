@@ -143,4 +143,15 @@ async def craft(ctx, recipe):
     await ctx.send(link_article)
     await ctx.send('Möglicherweise enstehen hier noch Fehler')
 
+
+# löscht alle nachrichten in einem beliebigen Channel
+@bot_client.command(help ='Löscht alle Nachrichten in einem Chat, wenn man die Rechte hat')
+async def purge(ctx):
+    if ctx.author == os.environ.get('admin_user'):
+        await ctx.channel.purge()
+    else:
+        await ctx.send('Du hast leider nicht die Rechte für diesen Befehl')
+
+
+
 bot_client.run(discord_api)
