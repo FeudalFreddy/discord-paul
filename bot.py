@@ -35,7 +35,7 @@ async def ping(ctx):
 
 
 # gebe den aktuellen dogecoin kurs aus, inkl. mengenangabe
-@bot_client.command()
+@bot_client.command(name='doge',help='gibt den Preis von 1 oder mehreren Dogecoins an')
 async def doge(ctx, amount=1.0):
     
     if amount <= 0:
@@ -54,7 +54,7 @@ async def doge(ctx, amount=1.0):
 
 
 # gebe den aktuellen wert von freddy dogecoin an
-@bot_client.command(aliases = ['dogef'])
+@bot_client.command(name='dogeF', aliases = ['dogef'], help='Freddys Dogecoin Depot')
 async def dogeF(ctx):
     amount = float(binance_client.get_asset_balance(asset='Doge')['free'])
     doge_price = float(binance_client.get_symbol_ticker(symbol="DOGEEUR")['price'])
@@ -67,7 +67,7 @@ async def hi(ctx):
     await ctx.send('Hello')
     
 # gibt die Primfaktoren einer Zahl zurück
-@bot_client.command()
+@bot_client.command(name='factorize',help='zerlegt eine zahl in ihre primfaktoren')
 async def factorize(ctx, number):
     
     try:
@@ -105,7 +105,7 @@ async def play(ctx, arg):
     
     
 # öffne wikipedia mit bestimmten keyword
-@bot_client.command()
+@bot_client.command(name='wiki',help='öffnet wikipedia')
 async def wiki(ctx, *keyword):
     if keyword == 'paul' or keyword == 'discordbot':
         await ctx.send('Du hast ein Easter-Egg gefunden!')
@@ -120,21 +120,21 @@ async def wiki(ctx, *keyword):
     
 
 # für menschen, die an paul mitarbeiten wollen
-@bot_client.command()
+@bot_client.command(name='contribute', help='Wenn man an Paul mitarbeiten möchte')
 async def contribute(ctx):
     link = r'https://github.com/FeudalFreddy/discord-paul'
     await ctx.send(f'Du möchstest an Paul mitarbeiten? \nUnter diesem Link findest du meinen Sourcecode:\n{link}')
 
 
 # random number generator
-@bot_client.command(aliases = ['randomnumber', 'random', 'numbergenerator'])
+@bot_client.command(aliases = ['randomnumber', 'random', 'numbergenerator'], name='rng', help='Gibt eine Zufallszahl aus')
 async def rng(ctx, lower=1, upper=100):
     await ctx.send(f'Zufallszahl zwischen {lower} und {upper}? Kommt sofort!')
     await ctx.send(random.randint(lower,upper))
 
 
 # minecraft crafting rezepte
-@bot_client.command()
+@bot_client.command(name='craft', help='Gibt (evtl.) ein Craftingrezept für ein bestimmtes Item an')
 async def craft(ctx, recipe):
                 
     link_article = 'https://www.minecraftcrafting.info/'
@@ -145,7 +145,7 @@ async def craft(ctx, recipe):
 
 
 # löscht alle nachrichten in einem beliebigen Channel
-@bot_client.command(help ='Löscht alle Nachrichten in einem Chat, wenn man die Rechte hat')
+@bot_client.command(name = 'purge', help ='Löscht alle Nachrichten in einem Chat, wenn man die Rechte hat')
 async def purge(ctx):
     if ctx.author == os.environ.get('admin_user'):
         await ctx.channel.purge()
