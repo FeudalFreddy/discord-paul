@@ -66,11 +66,6 @@ async def dogeF(ctx):
 async def hi(ctx):
     await ctx.send('Hello')
     
-@bot_client.command()
-async def purge(ctx):
-    if ctx.channel == "general":
-        await ctx.channel.purge()
-    
 # gibt die Primfaktoren einer Zahl zurück
 @bot_client.command()
 async def factorize(ctx, number):
