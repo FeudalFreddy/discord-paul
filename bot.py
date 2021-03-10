@@ -167,6 +167,10 @@ async def xSolve(ctx, a=0, b=0, c=0):
         return
     
     await ctx.send(f'Deine Lösungen sind x1= {x1} und x2= {x2}')
-    
-    
+
+# gibt den aktuellen Username aus
+@bot_client.command(name='WhoAmI', help='gibt den Username des Fragenstellers zurück')
+async def WhoAmI(ctx):
+    await ctx.send(str(ctx.author))
+        
 bot_client.run(discord_api)
