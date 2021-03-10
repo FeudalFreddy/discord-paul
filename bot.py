@@ -7,6 +7,7 @@ from discord.ext import commands
 from binance.client import Client
 from discord.ext.commands import bot
 from bs4 import BeautifulSoup
+from math import sqrt
 
 ## api einbindungen
 binance_api =  os.environ.get('binance_api')
@@ -151,6 +152,21 @@ async def purge(ctx):
     else:
         await ctx.send('Du hast leider nicht die Rechte für diesen Befehl')
 
-
-
+# gibt die Nullstellen einer quadratischen Gleichung an
+@bot_client.command(name='xSolve', help='gibt die Nullstellen einer quadratischen Gleichung an')
+async def xSolve(ctx, a=0, b=0, c=0):
+    if a == 0 and b == 0 and c == 0:
+        await ctx.send('Du musst Parameter angeben')
+        return
+    
+    try:
+        x1 = round((-b+sqrt(b*b-4*a*c))/(2*a),4)
+        x2 = round((-b-sqrt(b*b-4*a*c))/(2*a),4)
+    except:
+        await ctx.send(f'Leider hat deine Funktion keine Nullstellen')
+        return
+    
+    await ctx.send(f'Deine Lösungen sind x1= {x1} und x2= {x2}')
+    
+    
 bot_client.run(discord_api)
