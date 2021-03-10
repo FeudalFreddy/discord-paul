@@ -140,8 +140,7 @@ async def craft(ctx, recipe):
     link_article = 'https://www.minecraftcrafting.info/'
     link_pic = f'view-source:https://www.minecraftcrafting.info/imgs/craft_{recipe}.png'
     await ctx.send(link_pic)
-    await ctx.send(link_article)
-    await ctx.send('Möglicherweise enstehen hier noch Fehler')
+    await ctx.send('Falls du hier kein Craftingrezept siehst, liegt dass daran dass du den Block falsch geschrieben hast.')
 
 
 # löscht alle nachrichten in einem beliebigen Channel
