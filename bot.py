@@ -25,7 +25,7 @@ bot_client = commands.Bot(command_prefix = '$')
 @bot_client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(bot_client))
-    
+    print('Up and running')
 
 ## commands für den bot
 
@@ -62,6 +62,30 @@ async def dogeF(ctx):
     await ctx.send(f'{round(amount*doge_price,2)}€ in Freddys Depot')
     
     
+# kurs von shiba
+@bot_client.command(name='shibf')
+async def shibaf(ctx):
+    amount = float(binance_client.get_asset_balance(asset='Shib')['free'])
+    shib_price = float(binance_client.get_symbol_ticker(symbol="SHIBEUR")['price'])
+    print(f'{round(amount*shib_price,2)}€ in Freddys Depot')
+    await ctx.send(f'{round(amount*shib_price,2)}€ in Freddys Depot')
+    
+    
+# gesamt depot
+@bot_client.command(name='depot')
+async def depot(ctx):
+    amount_shib = float(binance_client.get_asset_balance(asset='Shib')['free'])
+    price_shib = float(binance_client.get_symbol_ticker(symbol="SHIBEUR")['price'])
+    
+    doge_amount = float(binance_client.get_asset_balance(asset='Doge')['free'])
+    doge_price = float(binance_client.get_symbol_ticker(symbol="DOGEEUR")['price'])
+    
+    value_shib = amount_shib*price_shib
+    doge_value = doge_amount*doge_price
+    
+    await ctx.send(f'{round(doge_value+value_shib,2)}€ in Freddys Depot')
+    
+
 # test command
 @bot_client.command()
 async def hi(ctx):
@@ -172,5 +196,7 @@ async def xSolve(ctx, a=0, b=0, c=0):
 @bot_client.command(name='WhoAmI', help='gibt den Username des Fragenstellers zurück')
 async def WhoAmI(ctx):
     await ctx.send(str(ctx.author))
-        
+
+    
+            
 bot_client.run(discord_api)
