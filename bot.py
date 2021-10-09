@@ -74,6 +74,8 @@ async def shibaf(ctx):
 # gesamt depot
 @bot_client.command(name='depot')
 async def depot(ctx):
+    
+    await ctx.send('Eine Depot-Übersicht wird erstellt...')
     amount_shib = float(binance_client.get_asset_balance(asset='Shib')['free'])
     price_shib = float(binance_client.get_symbol_ticker(symbol="SHIBEUR")['price'])
     
@@ -83,7 +85,13 @@ async def depot(ctx):
     value_shib = amount_shib*price_shib
     doge_value = doge_amount*doge_price
     
-    await ctx.send(f'{round(doge_value+value_shib,2)}€ in Freddys Depot')
+
+    await ctx.send(
+          f'Es wurden 15.00€ in {amount_shib} ShibaCoin investiert. Dies entspricht einem heutigen Wert von: {round(value_shib,2)}€ \n' 
+        + f'Es wurden 20.00€ in {doge_amount} DogeCoin investiert. Dies entspricht einem heutigen Wert von: {round(doge_value,2)}€\n'
+        + f'Das Depot hat folglich einen Gesamtwert von {round(doge_value+value_shib,2)}€ \n'
+        + f'Dies entspricht einem Gewinn von {(round(((doge_value+value_shib)/35)-1,2))}%')
+    
     
 
 # test command
