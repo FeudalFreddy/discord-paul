@@ -151,13 +151,13 @@ async def wiki(ctx, *keyword):
     link = f'https://de.wikipedia.org/wiki/{suchbegriff}'
     await ctx.send(link)
     
-
+"""
 # für menschen, die an paul mitarbeiten wollen
 @bot_client.command(name='contribute', help='Wenn man an Paul mitarbeiten möchte')
 async def contribute(ctx):
     link = r'https://github.com/FeudalFreddy/discord-paul'
     await ctx.send(f'Du möchstest an Paul mitarbeiten? \nUnter diesem Link findest du meinen Sourcecode:\n{link}')
-
+"""
 
 # random number generator
 @bot_client.command(aliases = ['randomnumber', 'random', 'numbergenerator'], name='rng', help='Gibt eine Zufallszahl aus')
