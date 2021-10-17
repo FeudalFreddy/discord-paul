@@ -71,28 +71,37 @@ async def shibaf(ctx):
     await ctx.send(f'{round(amount*shib_price,2)}€ in Freddys Depot')
     
     
-# gesamt depot
-@bot_client.command(name='depot')
+    
+# Depotanalyse von Binance
+@bot_client.command(name="depot")
 async def depot(ctx):
-    
-    await ctx.send('Eine Depot-Übersicht wird erstellt...')
-    amount_shib = float(binance_client.get_asset_balance(asset='Shib')['free'])
-    price_shib = float(binance_client.get_symbol_ticker(symbol="SHIBEUR")['price'])
-    
-    doge_amount = float(binance_client.get_asset_balance(asset='Doge')['free'])
-    doge_price = float(binance_client.get_symbol_ticker(symbol="DOGEEUR")['price'])
-    
-    value_shib = amount_shib*price_shib
-    doge_value = doge_amount*doge_price
-    
-    revenue = (((doge_value + value_shib) / 35) -1)*100
-    revenue = round(revenue,2)
+    await ctx.send('Depotübersicht wird erstellt ...')
 
-    await ctx.send(
-          f'Es wurden 15.00€ in {amount_shib} ShibaCoin investiert. Dies entspricht einem heutigen Wert von: {round(value_shib,2)}€ \n' 
-        + f'Es wurden 20.00€ in {doge_amount} DogeCoin investiert. Dies entspricht einem heutigen Wert von: {round(doge_value,2)}€\n'
-        + f'Das Depot hat folglich einen Gesamtwert von {round(doge_value+value_shib,2)}€ \n'
-        + f'Dies entspricht einem Gewinn von {revenue}%')
+    amount_doge = float(binance_client.get_asset_balance('Doge')['free'])
+    amount_shib = float(binance_client.get_asset_balance('Shib')['free'])
+    
+    price_doge = float(binance_client.get_symbol_ticker(symbol='DOGEEUR')['price'])
+    price_shib = float(binance_client.get_symbol_ticker(symbol='SHIBEUR')['price'])
+    
+    value_doge = round(amount_doge * price_doge, 2)
+    value_shib = round(amount_shib * price_shib, 2)
+    
+    invest_doge = 20
+    invest_shib = 15
+    
+    profit_doge = round(value_doge - invest_doge, 2)
+    profit_shib = round(value_shib - invest_shib, 2)
+    
+    profit_percent_doge = round((profit_doge/invest_doge) * 100, 2)
+    profit_percent_shib = round((profit_shib/invest_shib) * 100, 2)
+    
+    await ctx.send(f'Es wurden {invest_doge}€ in Dogecoin investiert.\n' +
+                   f'Heute entspricht dies einem Wert von {value_doge}€.\n' +
+                   f'Dies entspricht einem Gewinn von {profit_percent_doge}%\n')
+    
+    await ctx.send(f'Es wurden {invest_shib}€ in Shibacoin investiert.\n' +
+                   f'Heute entspricht dies einem Wert von {value_shib}€.\n' +
+                   f'Dies entspricht einem Gewinn von {profit_percent_shib}%\n')
     
     
 
