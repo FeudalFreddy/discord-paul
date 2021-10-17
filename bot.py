@@ -86,8 +86,8 @@ async def depot(ctx):
     value_doge = round(amount_doge * price_doge, 2)
     value_shib = round(amount_shib * price_shib, 2)
     
-    invest_doge = 20.00
-    invest_shib = 15.00
+    invest_doge = 20
+    invest_shib = 15
     
     profit_doge = round(value_doge - invest_doge, 2)
     profit_shib = round(value_shib - invest_shib, 2)
