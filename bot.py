@@ -86,8 +86,8 @@ async def depot(ctx):
     value_doge = round(amount_doge * price_doge, 2)
     value_shib = round(amount_shib * price_shib, 2)
     
-    invest_doge = 20
-    invest_shib = 15
+    invest_doge = 20.00
+    invest_shib = 15.00
     
     profit_doge = round(value_doge - invest_doge, 2)
     profit_shib = round(value_shib - invest_shib, 2)
@@ -95,13 +95,13 @@ async def depot(ctx):
     profit_percent_doge = round((profit_doge/invest_doge) * 100, 2)
     profit_percent_shib = round((profit_shib/invest_shib) * 100, 2)
     
-    await ctx.send(f'Es wurden {invest_doge}€ in Dogecoin investiert.\n' +
-                   f'Heute entspricht dies einem Wert von {value_doge}€.\n' +
-                   f'Dies entspricht einem Gewinn von {profit_percent_doge}%\n')
+    await ctx.send(f'Es wurden {invest_doge:.2f}€ in Dogecoin investiert.\n' +
+                   f'Heute entspricht dies einem Wert von {value_doge:.2f}€.\n' +
+                   f'Dies entspricht einem Gewinn von {profit_percent_doge:.2f}%\n')
     
-    await ctx.send(f'Es wurden {invest_shib}€ in Shibacoin investiert.\n' +
-                   f'Heute entspricht dies einem Wert von {value_shib}€.\n' +
-                   f'Dies entspricht einem Gewinn von {profit_percent_shib}%\n')
+    await ctx.send(f'Es wurden {invest_shib:.2f}€ in Shibacoin investiert.\n' +
+                   f'Heute entspricht dies einem Wert von {value_shib:.2f}€.\n' +
+                   f'Dies entspricht einem Gewinn von {profit_percent_shib:.2f}%\n')
     
     
 
