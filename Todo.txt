@@ -1,0 +1,4 @@
+TODO:
+
+- Anbindung an ING API um Gesamt depot Stand zu ermitteln
+- Depotwerte in eine Excel Tabelle übertragen
