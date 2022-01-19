@@ -71,7 +71,6 @@ async def shibaf(ctx):
     await ctx.send(f'{round(amount*shib_price,2)}€ in Freddys Depot')
     
     
-    
 # Depotanalyse von Binance
 @bot_client.command(name="depot")
 async def depot(ctx):
@@ -102,13 +101,13 @@ async def depot(ctx):
     await ctx.send(f'Es wurden {invest_shib:.2f}€ in Shibacoin investiert.\n' +
                    f'Heute entspricht dies einem Wert von {value_shib:.2f}€.\n' +
                    f'Dies entspricht einem Gewinn von {profit_percent_shib:.2f}%\n')
-    
-    
+     
 
 # test command
 @bot_client.command()
 async def hi(ctx):
     await ctx.send('Hello')
+    
     
 # gibt die Primfaktoren einer Zahl zurück
 @bot_client.command(name='factorize',help='zerlegt eine zahl in ihre primfaktoren')
@@ -162,6 +161,7 @@ async def wiki(ctx, *keyword):
     link = f'https://de.wikipedia.org/wiki/{suchbegriff}'
     await ctx.send(link)
     
+    
 """
 # für menschen, die an paul mitarbeiten wollen
 @bot_client.command(name='contribute', help='Wenn man an Paul mitarbeiten möchte')
@@ -169,6 +169,7 @@ async def contribute(ctx):
     link = r'https://github.com/FeudalFreddy/discord-paul'
     await ctx.send(f'Du möchstest an Paul mitarbeiten? \nUnter diesem Link findest du meinen Sourcecode:\n{link}')
 """
+
 
 # random number generator
 @bot_client.command(aliases = ['randomnumber', 'random', 'numbergenerator'], name='rng', help='Gibt eine Zufallszahl aus')
@@ -195,6 +196,7 @@ async def purge(ctx):
     else:
         await ctx.send('Du hast leider nicht die Rechte für diesen Befehl')
 
+
 # gibt die Nullstellen einer quadratischen Gleichung an
 @bot_client.command(name='xSolve', help='gibt die Nullstellen einer quadratischen Gleichung an')
 async def xSolve(ctx, a=0, b=0, c=0):
@@ -211,11 +213,13 @@ async def xSolve(ctx, a=0, b=0, c=0):
     
     await ctx.send(f'Deine Lösungen sind x1= {x1} und x2= {x2}')
 
+
 # gibt den aktuellen Username aus
 @bot_client.command(name='WhoAmI', help='gibt den Username des Fragenstellers zurück')
 async def WhoAmI(ctx):
     await ctx.send(str(ctx.author))
 
     
-            
+
+    
 bot_client.run(discord_api)
